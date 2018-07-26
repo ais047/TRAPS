@@ -18,7 +18,7 @@ Vue.config.productionTip = false
 Vue.use(VueFirestore)
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyBGEwSDfo5UdPkwyml-5-drtgBkKbYSG_Y',
+    key: '',
     libraries: 'places'
   }
 })
