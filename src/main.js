@@ -4,8 +4,18 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import VueFirestore from 'vue-firestore'
+
+/* eslint-disable-next-line */
+import init from './firebaseInit'
+
+// eslint workaround
+let d = init
+d = null
+console.log(d, 'Firebase init ignore')
 
 Vue.config.productionTip = false
+Vue.use(VueFirestore)
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyBGEwSDfo5UdPkwyml-5-drtgBkKbYSG_Y',

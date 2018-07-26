@@ -5,7 +5,7 @@
         class="gmap"
         ref="mapRef"
         :center="center"
-        :zoom="20"
+        :zoom="18"
         map-type-id="terrain"
       >
         <GmapMarker
@@ -34,16 +34,29 @@ export default {
   },
   data () {
     return {
-      center: { lat: 32.9292735, lng: -117.1502088 },
+      center: { lat: 0, lng: 0 },
       markers: [
-        { lat: 32.9292735, lng: -117.1502088 }
+        { position: { lat: 32.9292735, lng: -117.1502088 } }
       ]
     }
   },
   mounted () {
+    this.init()
     // this.$refs.mapRef.$mapPromise.then((map) => {
     //   map.panTo({lat: 1.38, lng: 103.80})
     // })
+  },
+  methods: {
+    init () {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          var geoloc = { lat: position.coords.latitude, lng: position.coords.longitude }
+          this.center = geoloc
+        })
+      } else {
+        console.error('Cannot access geolocation')
+      }
+    }
   }
 }
 </script>

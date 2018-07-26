@@ -5,14 +5,18 @@
   "author": "ais047 <hursungwoo@yahoo.com>",
   "private": true,
   "scripts": {
+    "start": "node server.js",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "build": "node build/build.js"
+    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",
+    "postinstall": "webpack -p --config ./build/webpack.prod.conf.js --progress"
   },
   "dependencies": {
+    "firebase": "^5.3.0",
     "google": "^2.1.0",
     "vue": "^2.5.2",
+    "vue-firestore": "^0.2.9",
     "vue-router": "^3.0.1",
     "vue2-google-maps": "^0.10.1"
   },
